@@ -1,0 +1,108 @@
+/*text*/
+h1, h2, h3, h4, h5, p{
+	font-family: Roboto;
+	margin:0;
+	font-weight:400;
+}
+h1{
+	font-size:20px;
+}
+/*links*/
+h2{
+	font-size:16px;
+}
+h3{
+	font-size:14px;
+}
+/*footer*/
+h4{
+	font-size:12px;
+	font-weight:300;
+}
+h5{
+	font-size:10px;
+	font-weight:300;
+}
+p{
+	font-size:10px;
+}
+
+/*nav bar*/
+.navbar{
+	text-align:center;
+}
+.navlogo img{
+	height:100px;
+}
+.navlinks a{
+	padding: 0 10px 0 10px;
+}
+.show{
+	color: black;
+}
+.show ul{
+	list-style: none;
+}
+/*footer*/
+.footer{
+	background:#E2E2E2;
+	padding: 5% 10% 5% 10%;
+}
+.footer h2, .footer a{
+	padding-bottom:5px;
+}
+.footer a, .footer i{
+	display:block;
+}
+.footer-social{
+	text-align:center;
+	margin-bottom:20px;
+}
+.footer-social a{
+	display:inline-block;
+}
+.social-icon{
+	height:30px;
+	padding:5px;
+}
+.style-4 input[type="email"]{
+	padding:0px;
+	border:none;
+	border-bottom:solid 2px #c9c9c9;
+	transition: border 0.3s;
+	background:none;
+	display:inline-block;
+}
+.style-4 input[type="email"]:focus,
+.style-4 input[type="email"].focus{
+	border-bottom:solid 2px #969696;
+	-webkit-box-shadow: none;
+	box-shadow:none;
+	outline:0;
+}
+/*admin*/
+.admin-all, .locations-type{
+	padding:5%;
+}
+.product-table{
+	padding:0;
+}
+.product-console{
+	padding:0;
+}
+/*main-page*/
+.featured-products, .locations-title{
+	padding:3%;
+	text-align:center;
+}
+/*locations*/
+.locations-type span{
+	padding:1%;
+	background-color:#FFF86D; 
+}
+.location{
+	margin-top:5%;
+}
+.locations-margin{
+	padding:0 20% 0 20%;
+}

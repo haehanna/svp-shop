@@ -1,0 +1,9 @@
+<a ui-sref="admin.addjumbotron">
+	<button>Add Jumbotron</button>
+</a>
+<div ng-repeat="jumbotron in ctrl.jumbotrons">
+	<div>
+		{{jumbotron.title}}
+	<button ng-click="ctrl.toJumbotron(jumbotron,jumbotron.id)">edit</button>
+	</div>
+</div>

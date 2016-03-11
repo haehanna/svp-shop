@@ -1,0 +1,48 @@
+<form>
+	<div>
+		<div>
+			title:
+		</div>
+		<input type="text" ng-model="ctrl.product.title">
+	</div>
+
+	<div>
+		<div>
+			brand:
+		</div>
+		<select ng-options="option as option.label for option in ctrl.brands" ng-model="ctrl.brand"></select>
+	</div>
+
+	<div>
+		<div>
+			gender:
+		</div>
+		<select ng-options="option as option.label for option in ctrl.genders" ng-model="ctrl.gender"></select>
+	</div>
+
+	<div>
+		<div>
+			category:
+		</div>
+		<select ng-options="option as option.label for option in ctrl.categories" ng-model="ctrl.category"></select>
+	</div>
+
+	<div>
+		<div>
+			details:
+		</div>
+		<input type="text" ng-model="ctrl.product.details">
+	</div>
+
+	<div>
+		<div>
+			image:
+		</div>
+		<input type="text" ng-model="ctrl.product.img">
+	</div>
+
+	
+	<button type="submit" ng-click="ctrl.deleteProduct(productId)">delete</button>
+	<button type="submit" ng-click="ctrl.updateProduct()">update</button>
+</form>
+

@@ -1,0 +1,59 @@
+<div>
+	<select ng-options="option as option.label for option in ctrl.genders" ng-model="ctrl.gender"></select>
+	<select ng-options="option as option.label for option in ctrl.categories" ng-model="ctrl.category"></select>
+	<select ng-options="option as option.label for option in ctrl.brands" ng-model="ctrl.brand"></select>
+</div>
+
+<div ng-repeat="product in ctrl.products 
+				| filter:{gender:ctrl.gender.value} 
+				| filter:{category:ctrl.category.value}
+				| filter:{brand:ctrl.brand.value}" class="col-sm-4">
+
+	<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%"><br>
+	{{product.title}}<br>
+	{{product.brand}} {{product.gender}}
+
+</div>
+
+<!-- <button ng-click="ctrl.test()"> debug</button> -->
+
+
+<div class="footer col-xs-12">
+	<div class="footer-social">
+		<h2>get social with us</h2>
+		<a href="https://twitter.com/svpsports"><img class="social-icon" src="../../assets/img/twitter.png"></a>
+		<a href="https://www.facebook.com/SVP.Sports.Admin/"><img class="social-icon" src="../../assets/img/fb.png"></a>
+		<a href="https://www.instagram.com/svpsports/?hl=en"><img class="social-icon" src="../../assets/img/ig.png"></a>
+	</div>
+
+	<div class="col-xs-12 col-sm-6 style-4">
+		<form action="//haehanna.us13.list-manage.com/subscribe/post?u=3f1cdc18c169f12d4a703f06e&amp;id=6859eaa0fb" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+
+		get our newsletter<br>
+		
+		<input type="email" value="" name="EMAIL" class="style-4">
+		    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3f1cdc18c169f12d4a703f06e_6859eaa0fb" tabindex="-1" value=""></div>
+		<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+
+		<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+		</form>
+	</div>
+
+	<div class="col-xs-12 col-sm-3">
+		<h2>SVP Sports</h2>
+		<h4>
+			<a ui-sref="main.about">about</a>
+			<a ui-sref="main.locations">locations</a>
+			<a ui-sref="main.careers">careers</a>
+		</h4>
+	</div>
+
+	<div class="col-xs-12 col-sm-3">
+		<h2>Help</h2>
+		<h4>
+			<a ui-sref="main.return">returns & exchanges</a>
+			<a ui-sref="main.contact">contact</a>
+		</h4> 
+	</div>
+</div>

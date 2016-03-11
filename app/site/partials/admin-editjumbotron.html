@@ -1,0 +1,14 @@
+<form>
+	<div>
+		title:
+		<input type="text" ng-model="ctrl.jumbotron.title">
+	</div>
+	<div>
+		img:
+		<input type="text" ng-model="ctrl.jumbotron.img">
+	</div>
+<img ng-src="{{'/assets/img/' + ctrl.jumbotron.img}}" height="50px"><br>
+
+	<button type="submit" ng-click="ctrl.deleteJumbotron(jumbotronId)">delete</button>
+	<button type="submit" ng-click="ctrl.updateJumbotron()">update</button>
+</form>

@@ -1,0 +1,20 @@
+<div class="navbar">
+	<div class="navlogo">
+		<a ui-sref="main.page"><img src="../assets/img/svp_logo.png"></a>
+	</div>
+	<div class="navlinks">
+		<h2>
+		<a ui-sref="admin.products">admin-products</a>
+		<a ui-sref="admin.jumbotron">jumbotron</a>
+		<a ui-sref="main.products">brands</a>
+		<a ng-mouseover="show = !show">brands</a>
+		</h2>
+			<div class="show" ng-show="show" ng-mouseleave="show = !show">
+				<ul>
+					<li ng-repeat="brand in ctrl.brands">{{brand.label}}</li>
+				</ul>
+			</div>
+	</div>
+</div>
+
+<div ui-view=""></div>

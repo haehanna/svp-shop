@@ -1,0 +1,47 @@
+<form>
+	<div>
+		<div>
+			title:
+		</div>
+		<input type="text" ng-model="ctrl.title">
+	</div>
+
+	<div>
+		<div>
+			brand:
+		</div>
+		<select ng-options="option as option.label for option in ctrl.brands" ng-model="ctrl.brand"></select>
+	</div>
+
+	<div>
+		<div>
+			gender:
+		</div>
+		<select ng-model="ctrl.gender" ng-options="option.value as option.label for option in ctrl.genders"></select>
+	</div>
+
+	<div>
+		<div>
+			category:
+		</div>
+		<select ng-model="ctrl.category" ng-options="option.value as option.label for option in ctrl.categories"></select>
+	</div>
+
+	<div>
+		<div>
+			details:
+		</div>
+		<input type="text" ng-model="ctrl.details">
+	</div>
+
+	<div>
+		<div>
+			image:
+		</div>
+		<input type="text" ng-model="ctrl.img">
+	</div>
+
+
+
+	<button type="sumbit" ng-click="ctrl.addProduct()">add product</button>
+</form>

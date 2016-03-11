@@ -1,0 +1,45 @@
+<div class="product-table col-sm-9">
+	<table>
+		<tr>
+			<th class="col-sm-3">Title</th>
+			<th class="col-sm-2">Brand</th>
+			<th class="col-sm-2">Gender</th>
+			<th class="col-sm-3">Image Preview</th>
+			<th class="col-sm-2">Details</th>
+		</tr>
+		<tr ng-repeat="product in ctrl.products 
+				| filter:{gender:ctrl.gender.value} 
+				| filter:{category:ctrl.category.value}
+				| filter:{brand:ctrl.brand.value}">
+			<td class="col-sm-3">{{product.title}}</td>
+			<td class="col-sm-2">{{product.brand}}</td>
+			<td class="col-sm-2">{{product.gender}}</td>
+			<td class="col-sm-3"><img ng-src="{{'/assets/img/' + product.img}}" style="width:100px"></td>
+			<td class="col-sm-2">{{product.details}}</td>
+		</tr>
+	</table>
+</div>
+
+<div class="product-console col-sm-3">
+	<div class="col-sm-12">
+		<a ui-sref="admin.addproduct">
+			<button>Add Product</button>
+		</a>
+	</div>
+	<div class="col-sm-12">
+		<h1>Sort</h1>
+		<select ng-options="option as option.label for option in ctrl.genders" ng-model="ctrl.gender"></select>
+	</div>
+	<div class="col-sm-12">
+		<select ng-options="option as option.label for option in ctrl.categories" ng-model="ctrl.category"></select>
+	</div>
+	<div class="col-sm-12">
+		<select ng-options="option as option.label for option in ctrl.brands" ng-model="ctrl.brand"></select>
+	</div>
+</div>
+
+
+
+
+
+
