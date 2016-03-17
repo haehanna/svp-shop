@@ -1,18 +1,23 @@
+<div class="content">
+<!-- jumbotron carousel -->
+<uib-carousel active="ctrl.activeSlide" interval="myInterval" no-wrap="noWrapSlides">
+    <uib-slide ng-repeat="slide in ctrl.jumbotrons track by $index" index="$index">
+        <img ng-src="{{'/assets/img/' + slide.img}}" style="margin:auto;width:100%;">
+    </uib-slide>
+</uib-carousel>
 
-<div ng-repeat="jumbotron in ctrl.jumbotrons">
-	<img ng-src="{{'/assets/img/' + jumbotron.img}}" style="width:100%;">
-</div>
-
+<!-- products -->
 <div class="featured-products">
 	<h1>Best Sellers</h1>
 </div>
 
-<div ng-repeat="product in ctrl.products" class="col-sm-4">
+<div ng-repeat="product in ctrl.products" ng-if="$index < 6" class="col-sm-4 main-products">
 	<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%"><br>
 	{{product.title}}<br>
 	{{product.brand}} {{product.gender}}
 </div>
 
+<!-- footer -->
 <div class="footer col-xs-12">
 	<div class="footer-social">
 		<h2>get social with us</h2>
@@ -41,6 +46,7 @@
 			<a ui-sref="main.about">about</a>
 			<a ui-sref="main.locations">locations</a>
 			<a ui-sref="main.careers">careers</a>
+			<a ui-sref="login">admin</a>
 		</h4>
 	</div>
 
@@ -51,4 +57,5 @@
 			<a ui-sref="main.contact">contact</a>
 		</h4> 
 	</div>
+</div>
 </div>

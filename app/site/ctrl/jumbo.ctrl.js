@@ -1,8 +1,8 @@
 app.controller('JumboCtrl',JumboCtrl);
 
-function JumboCtrl(jumbotronSrv,$state,api,jumbotron){
+function JumboCtrl(adminSrv,$state,api,jumbotron){
 	var ctrl = this;
-	ctrl.jumbotronSrv = jumbotronSrv;
+	ctrl.adminSrv = adminSrv;
 	ctrl.$state = $state;
 	ctrl.jumbotron = jumbotron;
 }
@@ -13,14 +13,14 @@ JumboCtrl.prototype.addJumbotron = function(){
 		title: ctrl.title,
 		img: ctrl.img
 	};
-	ctrl.jumbotronSrv.addJumbotron(jumbotron);
+	ctrl.adminSrv.addJumbotron(jumbotron);
 	ctrl.$state.go('admin.jumbotron')
 }
 
 JumboCtrl.prototype.deleteJumbotron = function(){
 	var ctrl = this;
 
-	ctrl.jumbotronSrv.deleteJumbotron(ctrl.jumbotron.id,ctrl.jumbotron)
+	ctrl.adminSrv.deleteJumbotron(ctrl.jumbotron.id,ctrl.jumbotron)
 	.then(function(res){
 		ctrl.$state.go('admin.jumbotron')
 	})
@@ -29,5 +29,5 @@ JumboCtrl.prototype.deleteJumbotron = function(){
 JumboCtrl.prototype.updateJumbotron = function(){
 	var ctrl = this;
 
-	ctrl.jumbotronSrv.updateJumbotron(ctrl.jumbotron, ctrl.jumbotron.id)
+	ctrl.adminSrv.updateJumbotron(ctrl.jumbotron, ctrl.jumbotron.id)
 }

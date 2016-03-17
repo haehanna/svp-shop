@@ -1,8 +1,8 @@
 app.controller('ProductCtrl', ProductCtrl);
 
-function ProductCtrl(productSrv,$state,$stateParams,api,product){
+function ProductCtrl(adminprodSrv,$state,$stateParams,api,product){
 	var ctrl = this;
-	ctrl.productSrv = productSrv;
+	ctrl.adminprodSrv = adminprodSrv;
 	ctrl.$state = $state;
 	ctrl.$stateParams = $stateParams;
 	ctrl.product = product;
@@ -67,7 +67,7 @@ ProductCtrl.prototype.addProduct = function(){
 		img: ctrl.img
 	};
 
-	ctrl.productSrv.addProduct(product);
+	ctrl.adminSrv.addProduct(product);
 	ctrl.$state.go('admin.products')
 }
 
@@ -87,7 +87,7 @@ ProductCtrl.prototype.updateProduct = function(){
 	ctrl.product.category = ctrl.category.value;
 	ctrl.product.brand = ctrl.brand.value;
 	console.log(ctrl.product);
-	ctrl.productSrv.updateProduct(ctrl.product, ctrl.product.id)
+	ctrl.adminSrv.updateProduct(ctrl.product, ctrl.product.id)
 }
 
 

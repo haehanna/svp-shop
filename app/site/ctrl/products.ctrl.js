@@ -1,22 +1,26 @@
 app.controller('ProductsCtrl',ProductsCtrl);
 
-function ProductsCtrl($scope,productSrv,$state,api,products,jumbotrons){
+function ProductsCtrl($scope,$stateParams,productSrv,adminprodSrv,$state,api,products,jumbotrons){
 	var ctrl = this;
 	ctrl.productSrv = productSrv;
 	ctrl.$state = $state;
+	ctrl.adminprodSrv = adminprodSrv;
 	ctrl.products = products;
 	ctrl.jumbotrons = jumbotrons;
 	ctrl.$scope = $scope;
+	ctrl.activeSlide = 0;
 
 	$scope.show=false;
+	$scope.show1=false;
+	$scope.show3=false;
+	$scope.show4=false;
 
 	ctrl.genders = [
 		{label:'Womens', value:'Womens'},
 		{label:'Mens', value:'Mens'},
 		{label:'Kids', value:'Kids'},
-		{label:'All', value:''}
+		{label:'All Genders', value:''}
 	];
-	ctrl.gender = ctrl.genders[3];
 	ctrl.categories = [
 		{label:'Accessories', value:'Accessories'},
 		{label:'Basketball', value:'Basketball'},
@@ -25,9 +29,9 @@ function ProductsCtrl($scope,productSrv,$state,api,products,jumbotrons){
 		{label:'Skatboard', value:'Skatboard'},
 		{label:'Running', value:'Running'},
 		{label:'Soccer', value:'Soccer'},
-		{label:'All', value:''}
+		{label:'All Categories', value:''}
 	];
-	ctrl.category = ctrl.categories[7];
+
 	ctrl.brands = [
 		{label:'Adidas', value:'Adidas'},
 		{label:'asics', value:'asics'},
@@ -37,9 +41,9 @@ function ProductsCtrl($scope,productSrv,$state,api,products,jumbotrons){
 		{label:'Jansport', value:'Jansport'},
 		{label:'K-Swiss', value:'K-Swiss'},
 		{label:'Nike', value:'Nike'},
-		{label:'All', value:''}
+		{label:'All Brands', value:''}
 	];
-	ctrl.brand = ctrl.brands[8];
+
 }
 ProductsCtrl.prototype.test = function() {
 	var ctrl = this;
@@ -48,7 +52,20 @@ ProductsCtrl.prototype.test = function() {
 		value:'Womens'
 		}
 };
-
+ProductsCtrl.prototype.goToBrand = function(brand) {
+	var ctrl = this;
+	ctrl.brand = brand
+	ctrl.$state.go('main.products');
+    ctrl.gender = ctrl.genders[ctrl.genders.length-1];
+    ctrl.category= ctrl.categories[ctrl.categories.length-1];
+};
+ProductsCtrl.prototype.goToCategory = function(category) {
+	var ctrl = this;
+	ctrl.category = category
+	ctrl.$state.go('main.products');
+	ctrl.gender = ctrl.genders[ctrl.genders.length-1];
+    ctrl.brand = ctrl.brands[ctrl.brands.length-1];
+};
 ProductsCtrl.prototype.toEditProduct = function(product, productId){
 	var ctrl = this;
 	ctrl.$state.go('admin.editproduct',{productId:productId});

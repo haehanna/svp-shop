@@ -1,47 +1,54 @@
-<form>
-	<div>
-		<div>
-			title:
+<div class="content col-sm-12 add-product">
+	<form>
+		<div class="col-sm-6">
+			<div>
+				<md-input-container>
+					<input placeholder="Title" ng-model="ctrl.title">
+				</md-input-container>
+			</div>
+
+			<div>
+				<md-input-container>
+					<input placeholder="Details" ng-model="ctrl.details">
+				</md-input-container>
+			</div>
+
+			<div>
+				<md-input-container>
+					<input placeholder="image.png" ng-model="ctrl.img">
+				</md-input-container>
+			</div>
 		</div>
-		<input type="text" ng-model="ctrl.title">
-	</div>
+		<div class="col-sm-6">
+			<div>
+				<md-input-container>
+					<md-select ng-model="ctrl.brand" placeholder="Select a Brand" >
+						<md-option ng-value="brand" ng-repeat="brand in ctrl.brands">{{brand.label}} 
+						</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
 
-	<div>
-		<div>
-			brand:
+			<div>
+				<md-input-container>
+					<md-select ng-model="ctrl.gender" placeholder="Gender/Age">
+						<md-option ng-value="gender" ng-repeat="gender in ctrl.genders">{{gender.label}} 
+						</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
+
+			<div>
+				<md-input-container>
+					<md-select ng-model="ctrl.category" placeholder="Select Category" >
+						<md-option ng-value="category" ng-repeat="category in ctrl.categories">{{category.label}} 
+						</md-option>
+					</md-select>
+				</md-input-container>
+			</div>
 		</div>
-		<select ng-options="option as option.label for option in ctrl.brands" ng-model="ctrl.brand"></select>
-	</div>
-
-	<div>
-		<div>
-			gender:
+		<div class="col-sm-12">
+			<button class="button" type="sumbit" ng-click="ctrl.addProduct()">add product</button>
 		</div>
-		<select ng-model="ctrl.gender" ng-options="option.value as option.label for option in ctrl.genders"></select>
-	</div>
-
-	<div>
-		<div>
-			category:
-		</div>
-		<select ng-model="ctrl.category" ng-options="option.value as option.label for option in ctrl.categories"></select>
-	</div>
-
-	<div>
-		<div>
-			details:
-		</div>
-		<input type="text" ng-model="ctrl.details">
-	</div>
-
-	<div>
-		<div>
-			image:
-		</div>
-		<input type="text" ng-model="ctrl.img">
-	</div>
-
-
-
-	<button type="sumbit" ng-click="ctrl.addProduct()">add product</button>
-</form>
+	</form>
+</div>

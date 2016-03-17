@@ -1,1 +1,18 @@
-admin-login.html
+<div class="login-page" ng-submit="authVm.authenticate()">
+
+    <h3>Log In</h3>
+
+    <div class="login-field">
+        <span data-valmsg-for="EmailAddress" data-valmsg-replace="true"></span>
+        <input type="text" name="EmailAddress" value="" placeholder="Email Address" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.email" />
+
+        <span data-valmsg-for="Password" data-valmsg-replace="true"></span>
+        <input type="password" name="Password" placeholder="Password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.password" />
+    </div>
+
+    <div class="login-button">
+        <input type="submit" value="{{authVm.auth_btn}}"/>
+    </div>
+
+
+<div ui-view=""></div>

@@ -1,8 +1,8 @@
 app.controller('JumbosCtrl',JumbosCtrl);
 
-function JumbosCtrl(jumbotronSrv,$state,api,jumbotrons){
+function JumbosCtrl(adminSrv,$state,api,jumbotrons){
 	var ctrl = this;
-	ctrl.jumbotronSrv = jumbotronSrv;
+	ctrl.adminSrv = adminSrv;
 	ctrl.$state = $state;
 	ctrl.jumbotrons = jumbotrons;
 }

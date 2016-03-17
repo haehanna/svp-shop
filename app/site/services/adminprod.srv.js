@@ -1,6 +1,6 @@
-app.service('productSrv',ProductService);
+app.service('adminprodSrv',adminprodService);
 
-function ProductService($state,api){
+function adminprodService($state,api){
 	this.api = api;
 	this.state = $state;
 	this.productDetails = {};
@@ -8,9 +8,9 @@ function ProductService($state,api){
 
 }
 
-ProductService.prototype.getProducts = function(){
+adminprodService.prototype.getProducts = function(){
 	var _this = this;
-	return this.api.request('/products',{},'GET')
+	return this.api.request('/adminprod',{},'GET')
 	.then(function(res){
 		console.log(res);
 		_this.products = res.data.products;
@@ -21,17 +21,17 @@ ProductService.prototype.getProducts = function(){
 	})
 }
 
-ProductService.prototype.getProduct = function(productId){
+adminprodService.prototype.getProduct = function(productId){
 	var _this = this;
-	return this.api.request('/products/'+productId,{},'GET')
+	return this.api.request('/adminprod/'+productId,{},'GET')
 	.then(function(res){
 		return res.data.product;
 	})
 }
 
-ProductService.prototype.addProduct = function(product){
+adminprodService.prototype.addProduct = function(product){
 	var _this = this;
-	this.api.request('/products',product,'POST')
+	this.api.request('/adminprod',product,'POST')
 	.then(function(res){
 		console.log(res);
 		if(res.status === 200){
@@ -41,9 +41,9 @@ ProductService.prototype.addProduct = function(product){
 	})
 }
 
-ProductService.prototype.deleteProduct = function(productId, product){
+adminprodService.prototype.deleteProduct = function(productId, product){
 	var _this = this;
-	return this.api.request('/products/'+productId,product,'DEL')
+	return this.api.request('/adminprod/'+productId,product,'DEL')
 	.then(function(res){
 		console.log(res);
 		if(res.status === 200){
@@ -56,9 +56,9 @@ ProductService.prototype.deleteProduct = function(productId, product){
 	})
 }
 
-ProductService.prototype.updateProduct = function(product,productId){
+adminprodService.prototype.updateProduct = function(product,productId){
 	var _this = this; 
-	this.api.request('/products/'+productId,product,'PUT')
+	this.api.request('/adminprod/'+productId,product,'PUT')
 	.then(function(res){
 		console.log(res);
 		if(res.status === 200){
@@ -68,7 +68,7 @@ ProductService.prototype.updateProduct = function(product,productId){
 	})
 }
 
-ProductService.prototype.updateProductList = function(product,productId){
+adminprodService.prototype.updateProductList = function(product,productId){
 	for(index in this.products){
 		if(this.products[index].id == productId){
 			this.products[index].title = product.title;

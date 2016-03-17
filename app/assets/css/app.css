@@ -1,5 +1,5 @@
 /*text*/
-h1, h2, h3, h4, h5, p{
+h1, h2, h3, h4, h5, p, body{
 	font-family: Roboto;
 	margin:0;
 	font-weight:400;
@@ -26,10 +26,28 @@ h5{
 p{
 	font-size:10px;
 }
+a{
+	color: black;
+}
+a:hover{
+	color: #d9d9d9;
+	text-decoration:none;
+	cursor:pointer;
+}
 
 /*nav bar*/
 .navbar{
 	text-align:center;
+ 	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	width:100%;
+	z-index:99;
+	height:125px;
+}
+.content{
+	margin-top:150px;
 }
 .navlogo img{
 	height:100px;
@@ -39,6 +57,10 @@ p{
 }
 .show{
 	color: black;
+	z-index: 100;
+	background-color: white;
+	width:100%;
+	padding:10px;
 }
 .show ul{
 	list-style: none;
@@ -46,7 +68,7 @@ p{
 /*footer*/
 .footer{
 	background:#E2E2E2;
-	padding: 5% 10% 5% 10%;
+	padding: 2% 10% 2% 10%;
 }
 .footer h2, .footer a{
 	padding-bottom:5px;
@@ -60,6 +82,7 @@ p{
 }
 .footer-social a{
 	display:inline-block;
+	margin-bottom:25px;
 }
 .social-icon{
 	height:30px;
@@ -80,6 +103,14 @@ p{
 	box-shadow:none;
 	outline:0;
 }
+.button{
+	border:0;
+	border-radius: 3px;
+	padding:5px 15px 5px 15px;
+}
+.button:hover{
+	background-color: #d9d9d9;
+}
 /*admin*/
 .admin-all, .locations-type{
 	padding:5%;
@@ -91,18 +122,66 @@ p{
 	padding:0;
 }
 /*main-page*/
-.featured-products, .locations-title{
+.featured-products, .locations-title, .jumbotron-all{
 	padding:3%;
 	text-align:center;
 }
+.main-products{
+	margin-bottom:50px;
+}
+.add-product{
+	padding: 3% 30% 3% 30%;
+	text-align:left;
+}
 /*locations*/
-.locations-type span{
+.content-margin span, .about span{
 	padding:1%;
 	background-color:#FFF86D; 
 }
-.location{
-	margin-top:5%;
+.content-text{
+	margin-top:4%
 }
-.locations-margin{
-	padding:0 20% 0 20%;
+.content-margin{
+	padding:0 20% 50px 20%;
 }
+.md-button {
+	background-color: rgba(158, 158, 158, 0.2);
+	padding: 5px 10px 5px 10px;
+}
+.md-button:not([disabled]):hover {
+	background-color: rgba(158, 158, 158, 0.2);
+}
+.md-button[disabled] {
+	color : rgba(0, 0, 0, 0.26);
+	background-color: transparent;
+}
+md-input-container{
+	width:100% !important;
+}
+md-input-container input{
+	font-weight:400;
+}
+.md-select{
+	max-width: 100px
+}
+md-select-menu {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    box-shadow: 0 0px 0px 0;
+    max-height: 400px;
+    min-height: 48px;
+    overflow-y: hidden;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.md-select-menu-container {
+	z-index:200;
+}
+
+

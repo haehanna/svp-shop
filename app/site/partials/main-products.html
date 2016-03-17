@@ -1,20 +1,46 @@
-<div>
-	<select ng-options="option as option.label for option in ctrl.genders" ng-model="ctrl.gender"></select>
-	<select ng-options="option as option.label for option in ctrl.categories" ng-model="ctrl.category"></select>
-	<select ng-options="option as option.label for option in ctrl.brands" ng-model="ctrl.brand"></select>
+<div class="content col-sm-12">
+
+	<div class="col-sm-2">
+		<md-input-container>
+			<md-select ng-model="ctrl.gender" placeholder="Gender/Age" >
+				<md-option ng-value="gender" ng-repeat="gender in ctrl.genders">{{gender.label}} 
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container>
+			<md-select ng-model="ctrl.category" placeholder="Select Category" >
+				<md-option ng-value="category" ng-repeat="category in ctrl.categories">{{category.label}} 
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container>
+			<md-select ng-model="ctrl.brand" value="All"placeholder="Select a Brand" >
+				<md-option ng-value="brand" ng-repeat="brand in ctrl.brands">{{brand.label}} 
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container>
+		<label></label>
+  			<input type="text" ng-model="search" placeholder="Search">
+		</md-input-container>
+	</div>
+
+	<div class="col-sm-10">
+		<div ng-repeat="product in ctrl.products 
+						| filter:search
+						| filter:{gender:ctrl.gender.value} 
+						| filter:{category:ctrl.category.value}
+						| filter:{brand:ctrl.brand.value}" class="col-sm-4">
+
+			<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%"><br>
+			{{product.title}}<br>
+			{{product.brand}} {{product.gender}}
+		</div>
+	</div>
 </div>
-
-<div ng-repeat="product in ctrl.products 
-				| filter:{gender:ctrl.gender.value} 
-				| filter:{category:ctrl.category.value}
-				| filter:{brand:ctrl.brand.value}" class="col-sm-4">
-
-	<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%"><br>
-	{{product.title}}<br>
-	{{product.brand}} {{product.gender}}
-
-</div>
-
 <!-- <button ng-click="ctrl.test()"> debug</button> -->
 
 
@@ -46,6 +72,7 @@
 			<a ui-sref="main.about">about</a>
 			<a ui-sref="main.locations">locations</a>
 			<a ui-sref="main.careers">careers</a>
+			<a ui-sref="admin.page">admin</a>
 		</h4>
 	</div>
 

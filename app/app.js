@@ -3,6 +3,9 @@
 var app = angular.module('svpApp',[
 	'ui.router',
 	'ui.bootstrap',
+	'ngMaterial',
+	'ngAnimate',
+	'angular-jwt'
 	]);
 
 app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
@@ -37,20 +40,25 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 			}
 		}
 	})
-
+	
 	.state('main.products',{
 		url:'products',
 		templateUrl: 'site/partials/main-products.html',
-		controller: 'ProductsCtrl as ctrl',
-		resolve:{
-			products: function(productSrv){
-				return productSrv.getProducts();
-			},
-			jumbotrons: function(jumbotronSrv){
-				return jumbotronSrv.getJumbotrons();
-			}
-		}
+		// controller: 'ProductsCtrl as ctrl',
+		// resolve:{
+		// 	products: function(productSrv){
+		// 		return productSrv.getProducts();
+		// 	},
+		// 	jumbotrons: function(jumbotronSrv){
+		// 		return jumbotronSrv.getJumbotrons();
+		// 	}
+		// }
 	})
+	// .state('main.productsByCat', {
+	// 	url:'categories/:category',
+	// 	templateUrl: 'site/partials/main-products.html',
+	// 	controller: 'NavCtrl as ctrl'
+	// })
 
 	.state('main.about',{
 		url:'about',
@@ -79,13 +87,20 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 
 	.state('login',{
 		url:'/login',
-		templateUrl: 'site/partials/admin-login.html'
+		templateUrl: 'site/partials/admin-login.html',
+		controller:'AuthCtrl',
+		controllerAs:'authVm'
+	})
+	.state('register',{
+		url:'/register',
+		templateUrl: 'site/partials/register.html',
+		controller:'AuthCtrl',
+		controllerAs:'authVm'
 	})
 
 	.state('admin',{
 		url:'/adminnav',
 		templateUrl: 'site/partials/admin-nav.html',
-		controller:'NavCtrl as ctrl'
 	})
 
 	.state('admin.page',{
@@ -98,8 +113,9 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		templateUrl: 'site/partials/admin-products.html',
 		controller: 'ProductsCtrl as ctrl',
 		resolve: {
-			products: function(productSrv){
-				return productSrv.getProducts();
+			products: function(adminprodSrv){
+				console.log('hello')
+				return adminprodSrv.getProducts();
 			},
 			jumbotrons: function(jumbotronSrv){
 				return jumbotronSrv.getJumbotrons();
@@ -112,7 +128,7 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		templateUrl: 'site/partials/admin-addproducts.html',
 		controller: 'ProductCtrl as ctrl',
 		resolve:{
-			product: function(productSrv){
+			product: function(adminprodSrv){
 				return {};
 			}
 		}
@@ -123,8 +139,8 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		templateUrl:'site/partials/admin-editproducts.html',
 		controller: 'ProductCtrl as ctrl',
 		resolve:{
-			product: function(productSrv,$stateParams){
-				return productSrv.getProduct($stateParams.productId);
+			product: function(adminprodSrv,$stateParams){
+				return adminprodService.getProduct($stateParams.productId);
 			}
 		}
 	})
@@ -134,11 +150,11 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		templateUrl:'site/partials/admin-jumbotron.html',
 		controller: 'JumbosCtrl as ctrl',
 		resolve:{
-			jumbotrons: function(jumbotronSrv){
-				return jumbotronSrv.getJumbotrons();
+			jumbotrons: function(adminSrv){
+				return adminSrv.getJumbotrons();
 			},
-			jumbotrons: function(jumbotronSrv){
-				return jumbotronSrv.getJumbotrons();
+			jumbotrons: function(adminSrv){
+				return adminSrv.getJumbotrons();
 			}
 		}
 	})
@@ -148,8 +164,8 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		templateUrl:'site/partials/admin-addjumbotron.html',
 		controller: 'JumboCtrl as ctrl',
 		resolve:{
-			jumbotron: function(jumbotronSrv){
-				return jumbotronSrv.getJumbotrons();
+			jumbotron: function(adminSrv){
+				return adminSrv.getJumbotrons();
 			}
 		}
 	})
@@ -159,11 +175,33 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		templateUrl:'site/partials/admin-editjumbotron.html',
 		controller: 'JumboCtrl as ctrl',
 		resolve:{
-			jumbotron: function(jumbotronSrv,$stateParams){
-				return jumbotronSrv.getJumbotron($stateParams.jumbotronId);
+			jumbotron: function(adminSrv,$stateParams){
+				return adminSrv.getJumbotron($stateParams.jumbotronId);
 			}
 		}
 	})
 
+	$httpProvider.interceptors.push(function(jwtHelper){
+			return {
+				request:function(config){
+					console.log(config);
+					config.headers.authentication = localStorage.authToken;
+					return config;
+				},
+				response:function(response){
+					var auth_token = response.headers('authentication');
+					if(auth_token){
+						var decrypt_token = jwtHelper.decodeToken(auth_token);
+						console.log(decrypt_token);
+						if(decrypt_token.email){
+							localStorage.authToken = auth_token;
+						}
+						
+					}
+					return response;
+				}
+			}
+		})
+	
 	
 })

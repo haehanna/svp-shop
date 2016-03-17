@@ -1,17 +1,20 @@
-<form>
-	<div>
-		<div>
-			title:
-		</div>
-		<input type="text" ng-model="ctrl.title">
-	</div>
 
-	<div>
-		<div>
-			img:
-		</div>
-		<input type="text" ng-model="ctrl.img">
-	</div>
+<div class="content col-sm-12 add-product">
+	<form>
+			<div>
+				<md-input-container>
+					<input placeholder="Title" ng-model="ctrl.title">
+				</md-input-container>
+			</div>
 
-	<button type="sumbit" ng-click="ctrl.addJumbotron()">add jumbotron</button>
-</form>
+			<div>
+				<md-input-container>
+					<input placeholder="image.png" ng-model="ctrl.img">
+				</md-input-container>
+			</div>
+
+		<div class="col-sm-12">
+			<button class="button" type="sumbit" ng-click="ctrl.addJumbotron()">Add Jumbotron</button>
+		</div>
+	</form>
+</div>
