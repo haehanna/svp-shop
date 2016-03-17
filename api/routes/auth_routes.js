@@ -1,3 +1,8 @@
+var models 	= require('./../models');
+var bcrypt	= require('bcrypt');
+var jwt		= require('jsonwebtoken');
+var router 	= require('express').Router();
+
 //register a new user
 router.post('/register',function(req,res){
 	console.log('Registration Endpoint');
