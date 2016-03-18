@@ -5,7 +5,8 @@ var app = angular.module('svpApp',[
 	'ui.bootstrap',
 	'ngMaterial',
 	'ngAnimate',
-	'angular-jwt'
+	'angular-jwt',
+	'ngFileUpload'
 	]);
 
 app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
@@ -59,6 +60,17 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 	// 	templateUrl: 'site/partials/main-products.html',
 	// 	controller: 'NavCtrl as ctrl'
 	// })
+
+	.state('main.featured',{
+		url:'featured',
+		templateUrl:'site/partials/main-featured.html'
+		// controller: 'ProductsCtrl as ctrl'
+		// resolve:{
+		// 	products: function(featuredSrv){
+		// 		return {};
+		// 	}
+		// }
+	})
 
 	.state('main.about',{
 		url:'about',
@@ -114,7 +126,6 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		controller: 'ProductsCtrl as ctrl',
 		resolve: {
 			products: function(adminprodSrv){
-				console.log('hello')
 				return adminprodSrv.getProducts();
 			},
 			jumbotrons: function(jumbotronSrv){
@@ -140,7 +151,7 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		controller: 'ProductCtrl as ctrl',
 		resolve:{
 			product: function(adminprodSrv,$stateParams){
-				return adminprodService.getProduct($stateParams.productId);
+				return adminprodSrv.getProduct($stateParams.productId);
 			}
 		}
 	})
@@ -150,9 +161,6 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 		templateUrl:'site/partials/admin-jumbotron.html',
 		controller: 'JumbosCtrl as ctrl',
 		resolve:{
-			jumbotrons: function(adminSrv){
-				return adminSrv.getJumbotrons();
-			},
 			jumbotrons: function(adminSrv){
 				return adminSrv.getJumbotrons();
 			}
@@ -184,7 +192,6 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 	$httpProvider.interceptors.push(function(jwtHelper){
 			return {
 				request:function(config){
-					console.log(config);
 					config.headers.authentication = localStorage.authToken;
 					return config;
 				},
@@ -192,7 +199,6 @@ app.config(function($stateProvider,$httpProvider,$urlRouterProvider){
 					var auth_token = response.headers('authentication');
 					if(auth_token){
 						var decrypt_token = jwtHelper.decodeToken(auth_token);
-						console.log(decrypt_token);
 						if(decrypt_token.email){
 							localStorage.authToken = auth_token;
 						}

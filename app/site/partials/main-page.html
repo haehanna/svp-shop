@@ -1,17 +1,18 @@
 <div class="content">
 <!-- jumbotron carousel -->
-<uib-carousel active="ctrl.activeSlide" interval="myInterval" no-wrap="noWrapSlides">
-    <uib-slide ng-repeat="slide in ctrl.jumbotrons track by $index" index="$index">
-        <img ng-src="{{'/assets/img/' + slide.img}}" style="margin:auto;width:100%;">
-    </uib-slide>
-</uib-carousel>
-
+	<div class="jumbotron-carousel">
+		<uib-carousel active="ctrl.activeSlide" interval="4000" no-wrap="noWrapSlides">
+		    <uib-slide ng-repeat="slide in ctrl.jumbotrons | filter:{active:true} track by $index" index="$index">
+		        <img ng-src="{{'/assets/img/' + slide.img}}" style="width:100%">
+		    </uib-slide>
+		</uib-carousel>
+	</div>
 <!-- products -->
 <div class="featured-products">
 	<h1>Best Sellers</h1>
 </div>
 
-<div ng-repeat="product in ctrl.products" ng-if="$index < 6" class="col-sm-4 main-products">
+<div ng-repeat="product in ctrl.products | filter:{featured:true}" ng-if="$index < 6" class="col-sm-4 main-products">
 	<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%"><br>
 	{{product.title}}<br>
 	{{product.brand}} {{product.gender}}

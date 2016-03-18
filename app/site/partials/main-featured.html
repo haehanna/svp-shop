@@ -1,3 +1,4 @@
+
 <div class="content col-sm-12">
 
 	<div class="col-sm-2">
@@ -32,8 +33,9 @@
 		<div class="sale-banner">
 			<h4><b>All items are 30-50% off original price! Shop in store only.</b></h4>
 		</div>
-		
+
 		<div ng-repeat="product in ctrl.products 
+						| filter:{featured:true}
 						| filter:search
 						| filter:{gender:ctrl.gender.value} 
 						| filter:{category:ctrl.category.value}

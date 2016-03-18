@@ -1,10 +1,10 @@
-<div class="navbar">
-	<div class="navlogo">
+<div class="navsbar">
+	<div class="navlogo col-xs-4">
 		<a ui-sref="main.page"><img src="../assets/img/svp_logo.png"></a>
 	</div>
-	<div class="navlinks">
+	<div class="navlinks col-xs-4">
 		<h2>
-		<a ui-sref="main.products">Featured</a>
+		<a ui-sref="main.featured">Featured</a>
 		<a ui-sref="main.products" 
 			ui-sref-opts="{reload:true}" 
 			ng-mouseenter="show = !show" 
@@ -17,24 +17,28 @@
 			ng-mouseleave="show1 = !show1">
 				Categories</a>
 		</h2>
-			<div class="show" 
-				ng-show="show || show3" 
-				ng-mouseleave="show3 = !show3" 
-				ng-mouseenter="show3 = !show3">
-				<ul>
-					<li ng-repeat="brand in ctrl.brands"><a ng-click="ctrl.goToBrand(brand)">{{brand.label}}</a></li>
-				</ul>
-			</div>
 
-			<div class="show" 
-				ng-show="show1 || show4" 
-				ng-mouseleave="show4 = !show4"
-				ng-mouseenter="show4 = !show4">
-				<ul>
-					<li ng-repeat="category in ctrl.categories"><a ng-click="ctrl.goToCategory(category)">{{category.label}}</a></li>
-				</ul>
-			</div>
+		<div class="show col-xs-12" 
+			ng-show="show || show3" 
+			ng-mouseleave="show3 = !show3" 
+			ng-mouseenter="show3 = !show3"
+			style="width: 100%; position: fixed; left: 0px; padding: 30px;">
+			<ul>
+				<li ng-repeat="brand in ctrl.brands"><a ng-click="ctrl.goToBrand(brand)">{{brand.label}}</a></li>
+			</ul>
+		</div>
+
+		<div class="show" 
+			ng-show="show1 || show4" 
+			ng-mouseleave="show4 = !show4"
+			ng-mouseenter="show4 = !show4"
+			style="width: 100%; position: fixed; left: 0px; padding: 30px;">
+			<ul>
+				<li ng-repeat="category in ctrl.categories"><a ng-click="ctrl.goToCategory(category)">{{category.label}}</a></li>
+			</ul>
+		</div>
 	</div>
+
 </div>
 
 <div ui-view=""></div>

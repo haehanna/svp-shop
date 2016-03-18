@@ -1,11 +1,15 @@
 app.controller('ProductCtrl', ProductCtrl);
 
-function ProductCtrl(adminprodSrv,$state,$stateParams,api,product){
+function ProductCtrl(Upload,adminprodSrv,$state,$stateParams,api,product, $scope){
 	var ctrl = this;
 	ctrl.adminprodSrv = adminprodSrv;
+	ctrl.Upload = Upload;
 	ctrl.$state = $state;
 	ctrl.$stateParams = $stateParams;
 	ctrl.product = product;
+	ctrl.toggleFeatured(product);
+
+
 	ctrl.genders = [
 		{label:'Womens', value:'Womens'},
 		{label:'Mens', value:'Mens'},
@@ -32,7 +36,7 @@ function ProductCtrl(adminprodSrv,$state,$stateParams,api,product){
 	];
 
 	if ($stateParams.productId) {
-		productSrv.getProduct($stateParams.productId)
+		adminprodSrv.getProduct($stateParams.productId)
 		.then(function(res){
 			console.log(res);
 			ctrl.product = res;
@@ -54,6 +58,7 @@ function ProductCtrl(adminprodSrv,$state,$stateParams,api,product){
 			}
 		});
 	}
+
 }
 
 ProductCtrl.prototype.addProduct = function(){
@@ -61,20 +66,21 @@ ProductCtrl.prototype.addProduct = function(){
 	var product = {
 		title: ctrl.title,
 		brand: ctrl.brand.value,
-		gender: ctrl.gender,
-		category: ctrl.category,
+		gender: ctrl.gender.value,
+		category: ctrl.category.value,
 		details: ctrl.details,
-		img: ctrl.img
+		img: ctrl.imgname,
+		featured: ctrl.featured
 	};
 
-	ctrl.adminSrv.addProduct(product);
+	ctrl.adminprodSrv.addProduct(product);
 	ctrl.$state.go('admin.products')
 }
 
 ProductCtrl.prototype.deleteProduct = function(){
 	var ctrl = this;
 
-	ctrl.productSrv.deleteProduct(ctrl.product.id, ctrl.product)
+	ctrl.adminprodSrv.deleteProduct(ctrl.product.id, ctrl.product)
 	.then(function(res){
 		ctrl.$state.go('admin.products');
 	})
@@ -86,8 +92,36 @@ ProductCtrl.prototype.updateProduct = function(){
 	ctrl.product.gender = ctrl.gender.value; 
 	ctrl.product.category = ctrl.category.value;
 	ctrl.product.brand = ctrl.brand.value;
+	ctrl.product.featured = ctrl.featured;
 	console.log(ctrl.product);
-	ctrl.adminSrv.updateProduct(ctrl.product, ctrl.product.id)
+	ctrl.adminprodSrv.updateProduct(ctrl.product, ctrl.product.id)
 }
 
+ProductCtrl.prototype.uploadImg = function(file){
+	var ctrl = this;
+	
+	file.upload = ctrl.Upload.upload({
+			url: '/api/photo/',
+			data: {file: file}
+		})
+		.then(function(res) {
+			console.log(res);
+			ctrl.imgname = res.data[0].filename;
+		}, function(err) {
+			console.log(err);
+		})
+}
 
+ProductCtrl.prototype.toggleFeatured = function(product){
+	var ctrl = this;
+	if (product) {
+		ctrl.featured = product.featured;
+	} else {
+		ctrl.featured = !ctrl.featured;
+	}
+	if (ctrl.featured) {
+		ctrl.featureBtn = 'Click to unfeature';
+	} else {
+		ctrl.featureBtn = 'Click to feature';
+	}
+}

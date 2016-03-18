@@ -36,21 +36,26 @@ a:hover{
 }
 
 /*nav bar*/
-.navbar{
-	text-align:center;
+.navsbar{
  	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: white;
+	background-color: #ffffff;
 	width:100%;
 	z-index:99;
-	height:125px;
-}
-.content{
-	margin-top:150px;
+	height:80px;
 }
 .navlogo img{
-	height:100px;
+	height:80px;
+}
+.navlogo{
+	z-index: 1000;
+}
+.navlinks, .navlinks a{
+	text-align:center;
+}
+.navlinks h2{
+	padding-top:10%;
 }
 .navlinks a{
 	padding: 0 10px 0 10px;
@@ -58,51 +63,18 @@ a:hover{
 .show{
 	color: black;
 	z-index: 100;
-	background-color: white;
-	width:100%;
-	padding:10px;
+	background-color: #ffffff;
+	margin:0;
+	padding:0;
 }
 .show ul{
 	list-style: none;
 }
-/*footer*/
-.footer{
-	background:#E2E2E2;
-	padding: 2% 10% 2% 10%;
+.content{
+	margin-top:80px;
 }
-.footer h2, .footer a{
-	padding-bottom:5px;
-}
-.footer a, .footer i{
-	display:block;
-}
-.footer-social{
-	text-align:center;
-	margin-bottom:20px;
-}
-.footer-social a{
-	display:inline-block;
-	margin-bottom:25px;
-}
-.social-icon{
-	height:30px;
-	padding:5px;
-}
-.style-4 input[type="email"]{
-	padding:0px;
-	border:none;
-	border-bottom:solid 2px #c9c9c9;
-	transition: border 0.3s;
-	background:none;
-	display:inline-block;
-}
-.style-4 input[type="email"]:focus,
-.style-4 input[type="email"].focus{
-	border-bottom:solid 2px #969696;
-	-webkit-box-shadow: none;
-	box-shadow:none;
-	outline:0;
-}
+
+/*buttons*/
 .button{
 	border:0;
 	border-radius: 3px;
@@ -111,52 +83,28 @@ a:hover{
 .button:hover{
 	background-color: #d9d9d9;
 }
-/*admin*/
-.admin-all, .locations-type{
-	padding:5%;
-}
-.product-table{
-	padding:0;
-}
-.product-console{
-	padding:0;
-}
-/*main-page*/
-.featured-products, .locations-title, .jumbotron-all{
-	padding:3%;
-	text-align:center;
-}
-.main-products{
-	margin-bottom:50px;
-}
-.add-product{
-	padding: 3% 30% 3% 30%;
-	text-align:left;
-}
-/*locations*/
-.content-margin span, .about span{
-	padding:1%;
-	background-color:#FFF86D; 
-}
-.content-text{
-	margin-top:4%
-}
-.content-margin{
-	padding:0 20% 50px 20%;
-}
 .md-button {
-	background-color: rgba(158, 158, 158, 0.2);
 	padding: 5px 10px 5px 10px;
 }
-.md-button:not([disabled]):hover {
+.md-button:not([disabled]):hover, .md-button {
 	background-color: rgba(158, 158, 158, 0.2);
 }
 .md-button[disabled] {
 	color : rgba(0, 0, 0, 0.26);
 	background-color: transparent;
 }
+.admin-filter .md-button{
+	font-weight:400;
+	text-transform:capitalize;
+	width:100%;
+}
+.login-button .button{
+	width:100%;
+}
+
+/*select boxes*/
 md-input-container{
-	width:100% !important;
+	width:100% ;
 }
 md-input-container input{
 	font-weight:400;
@@ -184,4 +132,109 @@ md-select-menu {
 	z-index:200;
 }
 
+/*main*/
+.featured-products, .locations-title, .jumbotron-all, .login-page{
+	padding:3%;
+	text-align:center;
+}
+.main-products{
+	margin-bottom:50px;
+}
+.sale-banner{
+	background:#595959;
+	margin:10px;
+	padding:10px;
+	color:#ffffff;
+	text-align:center;
+}
+.product-grid{
+	padding:10px;
+}
+.grid-text{
+	margin-bottom:10px;
+	background:#E2E2E2;
+	padding:5px;
+	color: #595959;
+}
 
+/*locations*/
+.content-margin span, .about span{
+	padding:1%;
+	background-color:#FFF86D; 
+}
+.content-text{
+	margin-top:4%
+}
+.content-margin{
+	padding:0 20% 50px 20%;
+}
+
+/*admin*/
+.login-page md-input-container input{
+	width:100%;
+	text-align:center;
+}
+.admin-all, .locations-type{
+	padding:5%;
+}
+.product-table{
+	padding:0;
+	margin:20px 0 20px 0;
+}
+.product-console{
+	padding:0;
+}
+.fa-search{
+	margin: 30px 0 0 0;
+	text-align:right;
+}
+.row1{
+	margin-bottom:10px;
+}
+
+/*footer*/
+.footer{
+	background:#E2E2E2;
+	padding: 2% 10% 2% 10%;
+}
+.footer h2, .footer a{
+	padding-bottom:5px;
+}
+.footer a, .footer i{
+	display:block;
+}
+.footer-social{
+	text-align:center;
+	margin-bottom:20px;
+}
+.footer-social a{
+	display:inline-block;
+	margin-bottom:25px;
+	color:#595959;
+}
+.social-icon{
+	height:30px;
+	padding:5px;
+}
+.style-4 input[type="email"]{
+	padding:0px;
+	border:none;
+	border-bottom:solid 2px #c9c9c9;
+	transition: border 0.3s;
+	background:none;
+	display:inline-block;
+}
+.style-4 input[type="email"]:focus,
+.style-4 input[type="email"].focus{
+	border-bottom:solid 2px #969696;
+	-webkit-box-shadow: none;
+	box-shadow:none;
+	outline:0;
+}
+
+
+/*quesionable*/
+.add-product{
+	padding: 3% 30% 3% 30%;
+	text-align:left;
+}

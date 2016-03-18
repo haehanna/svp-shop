@@ -1,17 +1,35 @@
-<div class="login-page" ng-submit="authVm.authenticate()">
-
-    <h3>Log In</h3>
-
-    <div class="login-field">
-        <span data-valmsg-for="EmailAddress" data-valmsg-replace="true"></span>
-        <input type="text" name="EmailAddress" value="" placeholder="Email Address" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.email" />
-
-        <span data-valmsg-for="Password" data-valmsg-replace="true"></span>
-        <input type="password" name="Password" placeholder="Password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.password" />
+<div class="navsbar">
+    <div class="navlogo col-xs-4">
+        <a ui-sref="main.page"><img src="../assets/img/svp_logo.png"></a>
     </div>
+</div>
+    
 
-    <div class="login-button">
-        <input type="submit" value="{{authVm.auth_btn}}"/>
+    <div class="content login-page col-xs-6 col-xs-offset-3" ng-submit="authVm.authenticate()">
+
+
+          <form method="post">
+            <div class="login-field">
+                <span data-valmsg-for="EmailAddress" data-valmsg-replace="true"></span>
+                
+                <md-input-container>
+                <label></label>
+                    <input type="text" name="EmailAddress" value="" placeholder="Email" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.email" />
+                </md-input-container>
+
+                <span data-valmsg-for="Password" data-valmsg-replace="true"></span>
+
+                <md-input-container>
+                <label></label>
+                    <input type="password" name="Password" placeholder="Password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="authVm.password" />
+                </md-input-container>
+            </div>
+
+            <div class="login-button">
+                <input class="button" type="submit" value="{{authVm.auth_btn}}"/>
+            </div>
+          </form>
+
     </div>
 
 

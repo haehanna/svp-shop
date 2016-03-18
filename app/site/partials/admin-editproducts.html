@@ -46,11 +46,23 @@
 					</md-select>
 				</md-input-container>
 			</div>
+
+			<form>
+				<input ngf-select name="userPhoto" accept="image/*" ngf-max-size="2MB" type="file" ng-model="ctrl.photo">
+				<button ng-click="ctrl.upload(ctrl.photo)">Upload File</button>
+			</form>
+
+			<div>
+				<button class="featured" ng-click="ctrl.toggleFeatured()">
+					{{ ctrl.featureBtn }}
+				</button>
+				<p>is it featured? {{ ctrl.featured }}</p>
+			</div>
 		</div>
 	
 		<div class="col-sm-12">
-			<button type="submit" ng-click="ctrl.deleteProduct(productId)">delete</button>
-			<button type="submit" ng-click="ctrl.updateProduct()">update</button>
+			<button class="button" type="submit" ng-click="ctrl.deleteProduct(productId)">delete</button>
+			<button class="button" type="submit" ng-click="ctrl.updateProduct()">update</button>
 		</div>
 	</form>
 </div>

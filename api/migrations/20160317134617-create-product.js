@@ -21,13 +21,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       details: {
         type: Sequelize.STRING
       },
       img: {
         type: Sequelize.STRING
+      },
+      featured: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

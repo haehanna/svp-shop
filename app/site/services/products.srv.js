@@ -72,9 +72,9 @@ ProductService.prototype.updateProductList = function(product,productId){
 	for(index in this.products){
 		if(this.products[index].id == productId){
 			this.products[index].title = product.title;
-			this.products[index].brand = product.brand;
-			this.products[index].gender = product.gender;
-			this.products[index].category = product.category;
+			this.products[index].brand = product.brand.value;
+			this.products[index].gender = product.gender.value;
+			this.products[index].category = product.category.value;
 			this.products[index].details = product.details;
 			this.products[index].img = product.img;
 			this.products[index].featured = product.featured;

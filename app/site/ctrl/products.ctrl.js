@@ -45,13 +45,7 @@ function ProductsCtrl($scope,$stateParams,productSrv,adminprodSrv,$state,api,pro
 	];
 
 }
-ProductsCtrl.prototype.test = function() {
-	var ctrl = this;
-	console.log(ctrl.gender);
-	ctrl.gender = {
-		value:'Womens'
-		}
-};
+
 ProductsCtrl.prototype.goToBrand = function(brand) {
 	var ctrl = this;
 	ctrl.brand = brand
@@ -69,5 +63,5 @@ ProductsCtrl.prototype.goToCategory = function(category) {
 ProductsCtrl.prototype.toEditProduct = function(product, productId){
 	var ctrl = this;
 	ctrl.$state.go('admin.editproduct',{productId:productId});
-}
+};
 

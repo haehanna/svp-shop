@@ -11,6 +11,19 @@
 				<input ng-model="ctrl.jumbotron.img">
 			</md-input-container>
 		</div>
+
+		<form>
+			<input ngf-select name="userPhoto" accept="image/*" ngf-max-size="2MB" type="file" ng-model="ctrl.img">
+			<button ng-click="ctrl.uploadImg(ctrl.img)">Upload File</button>
+		</form>
+
+			<div>
+				<button class="featured" ng-click="ctrl.toggleActivate()">
+					{{ ctrl.activeBtn }}
+				</button>
+				<p>is it featured? {{ ctrl.active }}</p>
+			</div>
+
 		
 		<button class="button" type="sumbit" ng-click="ctrl.deleteJumbotron(jumbotronId)">Delete</button>
 		<button class="button" ng-click="ctrl.updateJumbotron()">Update</button>

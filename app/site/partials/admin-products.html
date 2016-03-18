@@ -1,57 +1,81 @@
-<div class="content product-console col-sm-2">
-	<div class="col-sm-12">
-		<a ui-sref="admin.addproduct">
-			<md-button>Add Product</md-button>
-		</a>
+<div class="content col-xs-10 col-xs-offset-1">
+
+<!-- search bar -->
+	<div class="admin-search">
+		<i class="fa fa-search col-xs-1"></i>
+		<md-input-container class="col-xs-10" style="margin-bottom:0">
+			<label></label>
+  			<input type="text" ng-model="search" placeholder="Type Here to Search for Product:">
+		</md-input-container>
+
+<!-- filter product button -->
+		<div class="admin-filter">
+			<md-button class="button" ng-click="show = !show">
+				Filter Products By:
+			</md-button>
+
+<!-- show filters -->
+			<div class="show col-xs-12"
+				ng-show="show || show3"
+				style="margin-top:10px;">
+				
+				<md-input-container class="col-xs-10 col-xs-offset-1" style="margin-top:0">
+					<md-select ng-model="ctrl.gender" placeholder="Gender/Age">
+						<md-option ng-value="gender" ng-repeat="gender in ctrl.genders">{{gender.label}} 
+						</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container class="col-xs-10 col-xs-offset-1" style="margin-top:0">
+					<md-select ng-model="ctrl.category" placeholder="Select Category" >
+						<md-option ng-value="category" ng-repeat="category in ctrl.categories">{{category.label}} 
+						</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container class="col-xs-10 col-xs-offset-1" style="margin-top:0">
+					<md-select ng-model="ctrl.brand" placeholder="Select a Brand" >
+						<md-option ng-value="brand" ng-repeat="brand in ctrl.brands">{{brand.label}} 
+						</md-option>
+					</md-select>
+				</md-input-container>
+
+				<a ng-click="show = !show"><i class="col-xs-10 col-xs-offset-1 fa fa-caret-up" style="text-align:center;font-size:20px"></i>
+				</a>
+			</div>
+			<!-- add product button -->
+			<a ui-sref="admin.addproduct">
+				<md-button>
+					<i class="fa fa-plus" style="padding-right:10px"> </i>Add Product
+				</md-button>
+			</a>
+		</div>
 	</div>
-	<div class="col-sm-12">
-		<md-input-container>
-			<md-select ng-model="ctrl.gender" placeholder="Gender/Age">
-				<md-option ng-value="gender" ng-repeat="gender in ctrl.genders">{{gender.label}} 
-				</md-option>
-			</md-select>
-		</md-input-container>
 
-		<md-input-container>
-			<md-select ng-model="ctrl.category" placeholder="Select Category" >
-				<md-option ng-value="category" ng-repeat="category in ctrl.categories">{{category.label}} 
-				</md-option>
-			</md-select>
-		</md-input-container>
-
-		<md-input-container>
-			<md-select ng-model="ctrl.brand" placeholder="Select a Brand" >
-				<md-option ng-value="brand" ng-repeat="brand in ctrl.brands">{{brand.label}} 
-				</md-option>
-			</md-select>
-		</md-input-container>
+	<div class="product-table col-sm-12">
+		<table>
+			<tr class="row1">
+				<th class="col-sm-3">Title</th>
+				<th class="col-sm-2">Brand</th>
+				<th class="col-sm-2">Gender</th>
+				<th class="col-sm-2">Image Preview</th>
+				<th class="col-sm-2">Details</th>
+				<th class="col-sm-1">Edit</th>
+			</tr>
+			<tr class="row1" ng-repeat="product in ctrl.products 
+					| filter:search
+					| filter:{gender:ctrl.gender.value} 
+					| filter:{category:ctrl.category.value}
+					| filter:{brand:ctrl.brand.value}">
+				<td class="col-sm-3">{{product.title}}</td>
+				<td class="col-sm-2">{{product.brand}}</td>
+				<td class="col-sm-2">{{product.gender}}</td>
+				<td class="col-sm-2"><img ng-src="{{'/assets/img/' + product.img}}" style="width:100px"></td>
+				<td class="col-sm-2">{{product.details}}</td>
+				<td class="col-sm-1"><button class="button" ng-click="ctrl.toEditProduct(product,product.id)">x</button></td>
+			</tr>
+		</table>
 	</div>
+
 </div>
-
-<div class="content product-table col-sm-10">
-	<table>
-		<tr>
-			<th class="col-sm-3">Title</th>
-			<th class="col-sm-2">Brand</th>
-			<th class="col-sm-2">Gender</th>
-			<th class="col-sm-2">Image Preview</th>
-			<th class="col-sm-2">Details</th>
-			<th class="col-sm-1">Edit</th>
-		</tr>
-		<tr ng-repeat="product in ctrl.products 
-				| filter:{gender:ctrl.gender.value} 
-				| filter:{category:ctrl.category.value}
-				| filter:{brand:ctrl.brand.value}">
-			<td class="col-sm-3">{{product.title}}</td>
-			<td class="col-sm-2">{{product.brand}}</td>
-			<td class="col-sm-2">{{product.gender}}</td>
-			<td class="col-sm-2"><img ng-src="{{'/assets/img/' + product.img}}" style="width:100px"></td>
-			<td class="col-sm-2">{{product.details}}</td>
-			<td class="col-sm-1"><button class="button" ng-click="ctrl.toEditProduct(product,product.id)">x</button></td>
-		</tr>
-	</table>
-</div>
-
-
-
 

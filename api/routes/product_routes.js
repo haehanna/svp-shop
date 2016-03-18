@@ -56,6 +56,7 @@ router.put('/:productId',function(req,res){
 			category:__product.category,
 			details:__product.details,
 			img:__product.img,
+			featured:__product.featured
 		});
 
 		__product.id = req.params.productId;

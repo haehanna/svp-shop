@@ -13,7 +13,25 @@ var app = express();
 var bcrypt	= require('bcrypt');
 var jwt		= require('jsonwebtoken');
 var router 	= require('express').Router();
+var multer = require('multer');
 
+var storageDetails = multer.diskStorage({
+	destination: './../app/assets/img/',
+	filename: function(req, file, callback) {
+		var originalname = file.originalname;
+		var extension = originalname.substring(originalname.lastIndexOf('.'));
+		var withoutExtension = originalname.substring(0, originalname.lastIndexOf('.'));
+		var fullfilename = withoutExtension + '_' + Date.now() + extension;
+		callback(null, fullfilename);
+	}
+});
+
+var upload = multer({storage: storageDetails, fileSize: 2000000}).any();
+
+app.post('/api/photo/', upload, function(req, res) {
+	console.log(req.files);
+	res.json(req.files);	
+})
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));

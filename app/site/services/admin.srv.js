@@ -8,15 +8,20 @@ function AdminService($state,api){
 
 AdminService.prototype.getJumbotrons = function(){
 	var _this = this;
-	return this.api.request('/adminjumbo',{},'GET')
-	.then(function(res){
-		console.log(res);
-		_this.jumbotrons = res.data.jumbotrons;
-		return res.data.jumbotrons;
-	},function(res){
-		console.log(res);
-		return;
-	})
+	if(_this.jumbotrons.length == 0){
+		return this.api.request('/adminjumbo',{},'GET')
+		.then(function(res){
+			console.log(res);
+			_this.jumbotrons = res.data.jumbotrons;
+			return res.data.jumbotrons;
+		},function(res){
+			console.log(res);
+			return;
+		})
+	}
+	else{
+		return _this.jumbotrons;
+	}
 }
 
 AdminService.prototype.getJumbotron = function(jumbotronId){
@@ -67,13 +72,16 @@ AdminService.prototype.updateJumbotron = function(jumbotron,jumbotronId){
 }
 
 AdminService.prototype.updateJumboList = function(jumbotron,jumbotronId){
-	for(index in this.jumbotrons){
+
+	for(var index in this.jumbotrons){
 		if(this.jumbotrons[index].id == jumbotronId){
-			this.jumbotron[index].title == jumbotron.title;
-			this.jumbotron[index].img == jumbotron.img;
-			this.jumbotron[index].active == jumbotron.active;
+			this.jumbotrons[index].title = jumbotron.title;
+			this.jumbotrons[index].img = jumbotron.img;
+			this.jumbotrons[index].active = jumbotron.active;
 		}
 	}
+	console.log(jumbotron);
+	console.log(this.jumbotrons);
 }
 
 

@@ -15,7 +15,7 @@
 
 			<div>
 				<md-input-container>
-					<input placeholder="image.png" ng-model="ctrl.img">
+					<input placeholder="image.png" ng-model="ctrl.imgname">
 				</md-input-container>
 			</div>
 		</div>
@@ -46,6 +46,19 @@
 					</md-select>
 				</md-input-container>
 			</div>
+
+			<form>
+				<input ngf-select name="userPhoto" accept="image/*" ngf-max-size="2MB" type="file" ng-model="ctrl.img">
+				<button ng-click="ctrl.uploadImg(ctrl.img)">Upload File</button>
+			</form>
+
+			<div>
+				<button class="featured" ng-model="ctrl.featured" ng-click="ctrl.toggleFeatured()">
+					{{ ctrl.featureBtn }}
+				</button>
+				<p>is it featured? {{ ctrl.featured }}</p>
+			</div>
+			
 		</div>
 		<div class="col-sm-12">
 			<button class="button" type="sumbit" ng-click="ctrl.addProduct()">add product</button>
