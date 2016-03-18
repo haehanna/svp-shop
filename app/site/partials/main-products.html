@@ -33,19 +33,21 @@
 			<h4><b>All items are 30-50% off original price! Shop in store only.</b></h4>
 		</div>
 		
-		<div ng-repeat="product in ctrl.products 
-						| filter:search
-						| filter:{gender:ctrl.gender.value} 
-						| filter:{category:ctrl.category.value}
-						| filter:{brand:ctrl.brand.value}" 
-			class="product-grid col-sm-4">
+		<div class="row">
+			<div ng-repeat="product in ctrl.products 
+							| filter:search
+							| filter:{gender:ctrl.gender.value} 
+							| filter:{category:ctrl.category.value}
+							| filter:{brand:ctrl.brand.value}" 
+				class="product-grid col-sm-4">
 
-			<div>
-				<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%">
-			</div>
-			<div class="grid-text">
-				{{product.title | uppercase}}<br>
-				<b>{{product.brand | uppercase}} | {{product.gender | uppercase}}</b>
+				<div>
+					<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%">
+				</div>
+				<div class="grid-text">
+					{{product.title | uppercase}}<br>
+					<b>{{product.brand | uppercase}} | {{product.gender | uppercase}}</b>
+				</div>
 			</div>
 		</div>
 	</div>

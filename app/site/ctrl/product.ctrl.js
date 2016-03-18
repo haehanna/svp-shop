@@ -9,29 +9,23 @@ function ProductCtrl(Upload,adminprodSrv,$state,$stateParams,api,product, $scope
 	ctrl.product = product;
 	ctrl.toggleFeatured(product);
 
-
 	ctrl.genders = [
 		{label:'Womens', value:'Womens'},
 		{label:'Mens', value:'Mens'},
 		{label:'Kids', value:'Kids'},
+		{label:'Unisex', value:'Unisex'}
 	];
 	ctrl.categories = [
 		{label:'Accessories', value:'Accessories'},
 		{label:'Basketball', value:'Basketball'},
 		{label:'Casual', value:'Casual'},
-		{label:'Golf', value:'Golf'},
-		{label:'Skatboard', value:'Skatboard'},
 		{label:'Running', value:'Running'},
 		{label:'Soccer', value:'Soccer'},
 	];
 	ctrl.brands = [
 		{label:'Adidas', value:'Adidas'},
 		{label:'asics', value:'asics'},
-		{label:'Birkenstock', value:'Birkenstock'},
-		{label:'Converse', value:'Converse'},
 		{label:'Herschel', value:'Herschel'},
-		{label:'Jansport', value:'Jansport'},
-		{label:'K-Swiss', value:'K-Swiss'},
 		{label:'Nike', value:'Nike'},
 	];
 
@@ -93,6 +87,7 @@ ProductCtrl.prototype.updateProduct = function(){
 	ctrl.product.category = ctrl.category.value;
 	ctrl.product.brand = ctrl.brand.value;
 	ctrl.product.featured = ctrl.featured;
+	ctrl.product.imgname = ctrl.imgname;
 	console.log(ctrl.product);
 	ctrl.adminprodSrv.updateProduct(ctrl.product, ctrl.product.id)
 }
@@ -120,8 +115,8 @@ ProductCtrl.prototype.toggleFeatured = function(product){
 		ctrl.featured = !ctrl.featured;
 	}
 	if (ctrl.featured) {
-		ctrl.featureBtn = 'Click to unfeature';
+		ctrl.featureBtn = 'Product is Featured';
 	} else {
-		ctrl.featureBtn = 'Click to feature';
+		ctrl.featureBtn = 'Click to Feature Product';
 	}
 }

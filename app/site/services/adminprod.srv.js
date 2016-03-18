@@ -76,7 +76,7 @@ adminprodService.prototype.updateProductList = function(product,productId){
 			this.products[index].gender = product.gender;
 			this.products[index].category = product.category;
 			this.products[index].details = product.details;
-			this.products[index].img = product.img;
+			this.products[index].img = product.imgname;
 			this.products[index].featured = product.featured;
 		}
 	}

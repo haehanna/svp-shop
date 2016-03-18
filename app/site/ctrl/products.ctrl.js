@@ -19,14 +19,13 @@ function ProductsCtrl($scope,$stateParams,productSrv,adminprodSrv,$state,api,pro
 		{label:'Womens', value:'Womens'},
 		{label:'Mens', value:'Mens'},
 		{label:'Kids', value:'Kids'},
+		{label:'Unisex', value:'Unisex'},
 		{label:'All Genders', value:''}
 	];
 	ctrl.categories = [
 		{label:'Accessories', value:'Accessories'},
 		{label:'Basketball', value:'Basketball'},
 		{label:'Casual', value:'Casual'},
-		{label:'Golf', value:'Golf'},
-		{label:'Skatboard', value:'Skatboard'},
 		{label:'Running', value:'Running'},
 		{label:'Soccer', value:'Soccer'},
 		{label:'All Categories', value:''}
@@ -35,11 +34,7 @@ function ProductsCtrl($scope,$stateParams,productSrv,adminprodSrv,$state,api,pro
 	ctrl.brands = [
 		{label:'Adidas', value:'Adidas'},
 		{label:'asics', value:'asics'},
-		{label:'Birkenstock', value:'Birkenstock'},
-		{label:'Converse', value:'Converse'},
 		{label:'Herschel', value:'Herschel'},
-		{label:'Jansport', value:'Jansport'},
-		{label:'K-Swiss', value:'K-Swiss'},
 		{label:'Nike', value:'Nike'},
 		{label:'All Brands', value:''}
 	];

@@ -16,7 +16,7 @@ var router 	= require('express').Router();
 var multer = require('multer');
 
 var storageDetails = multer.diskStorage({
-	destination: './../app/assets/img/',
+	destination: './app/assets/img/',
 	filename: function(req, file, callback) {
 		var originalname = file.originalname;
 		var extension = originalname.substring(originalname.lastIndexOf('.'));

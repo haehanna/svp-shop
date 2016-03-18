@@ -1,69 +1,68 @@
-<div class="content col-sm-12 add-product">
+<div class="content col-xs-10 col-xs-offset-1">
+
 	<form>
-		<div class="col-sm-6">
-			<div>
-				<md-input-container>
-					<input placeholder="Title" ng-model="ctrl.product.title">
-				</md-input-container>
-			</div>
+	<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+		<md-input-container>
+			<label></label>
+			<input placeholder="Title Here" ng-model="ctrl.product.title">
+		</md-input-container>
 
-			<div>
-				<md-input-container>
-					<input placeholder="Details" ng-model="ctrl.product.details">
-				</md-input-container>
-			</div>
+		<md-input-container style="margin: 0;">
+			<label></label>
+			<input placeholder="Add Notes" ng-model="ctrl.product.details" style="margin: 0;">
+		</md-input-container>
 
-			<div>
-				<md-input-container>
-					<input placeholder="image.png" ng-model="ctrl.product.img">
-				</md-input-container>
-			</div>
-		</div>
-		<div class="col-sm-6">
-			<div>
-				<md-input-container>
-					<md-select ng-model="ctrl.brand" placeholder="Select a Brand" >
-						<md-option ng-value="brand" ng-repeat="brand in ctrl.brands">{{brand.label}} 
-						</md-option>
-					</md-select>
-				</md-input-container>
-			</div>
+		<md-input-container>
+			<md-select ng-model="ctrl.brand" placeholder="Select a Brand" >
+				<md-option ng-value="brand" ng-repeat="brand in ctrl.brands">{{brand.label}} 
+				</md-option>
+			</md-select>
+		</md-input-container>
 
-			<div>
-				<md-input-container>
-					<md-select ng-model="ctrl.gender" placeholder="Gender/Age">
-						<md-option ng-value="gender" ng-repeat="gender in ctrl.genders">{{gender.label}} 
-						</md-option>
-					</md-select>
-				</md-input-container>
-			</div>
+		<md-input-container>
+			<md-select ng-model="ctrl.gender" placeholder="Gender/Age">
+				<md-option ng-value="gender" ng-repeat="gender in ctrl.genders">{{gender.label}} 
+				</md-option>
+			</md-select>
+		</md-input-container>
 
-			<div>
-				<md-input-container>
-					<md-select ng-model="ctrl.category" placeholder="Select Category" >
-						<md-option ng-value="category" ng-repeat="category in ctrl.categories">{{category.label}} 
-						</md-option>
-					</md-select>
-				</md-input-container>
-			</div>
+		<md-input-container>
+			<md-select ng-model="ctrl.category" placeholder="Select Category" >
+				<md-option ng-value="category" ng-repeat="category in ctrl.categories">{{category.label}} 
+				</md-option>
+			</md-select>
+		</md-input-container>
 
-			<form>
-				<input ngf-select name="userPhoto" accept="image/*" ngf-max-size="2MB" type="file" ng-model="ctrl.photo">
-				<button ng-click="ctrl.upload(ctrl.photo)">Upload File</button>
-			</form>
+		<form>
+		 <h3>Upload Image</h3>
 
-			<div>
-				<button class="featured" ng-click="ctrl.toggleFeatured()">
+			<input class="button" ngf-select name="userPhoto" accept="image/*" ngf-max-size="2MB" type="file" ng-model="ctrl.img" style="width:100%">
+			<md-button class="button" ng-click="ctrl.uploadImg(ctrl.img)" style="font-weight:400">Click to Upload Image File</md-button>
+		</form>
+
+		<md-input-container style="margin: 0;">
+			<label></label>
+			<input placeholder="Uploaded Image" ng-model="ctrl.product.img">
+		</md-input-container>
+
+		<div>
+			<button class="featured button" ng-model="ctrl.featured" style="width:100%; padding:10px" ng-click="ctrl.toggleFeatured()">
 					{{ ctrl.featureBtn }}
-				</button>
-				<p>is it featured? {{ ctrl.featured }}</p>
-			</div>
+			</button>
 		</div>
-	
-		<div class="col-sm-12">
-			<button class="button" type="submit" ng-click="ctrl.deleteProduct(productId)">delete</button>
-			<button class="button" type="submit" ng-click="ctrl.updateProduct()">update</button>
-		</div>
-	</form>
-</div>
 
+		<div>
+		<br>
+
+			<button class="button" type="submit" ng-click="ctrl.updateProduct()" style="width:100%; margin-top:10px; padding:10px">Update Product</button>
+
+			<button class="button" type="submit" ng-click="ctrl.deleteProduct(productId)" style="width:100%; margin-top:10px; padding:10px">Delete Product</button>
+		</div>
+
+	</div>
+
+
+	</form>
+
+
+</div>

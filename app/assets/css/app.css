@@ -34,7 +34,6 @@ a:hover{
 	text-decoration:none;
 	cursor:pointer;
 }
-
 /*nav bar*/
 .navsbar{
  	position: fixed;
@@ -78,7 +77,9 @@ a:hover{
 .button{
 	border:0;
 	border-radius: 3px;
-	padding:5px 15px 5px 15px;
+	padding:5px 15px 5px 15px
+	margin-top:10px;
+	outline: none !important;
 }
 .button:hover{
 	background-color: #d9d9d9;
@@ -86,20 +87,29 @@ a:hover{
 .md-button {
 	padding: 5px 10px 5px 10px;
 }
-.md-button:not([disabled]):hover, .md-button {
+.md-button:not([disabled]):hover, .md-button, .button {
 	background-color: rgba(158, 158, 158, 0.2);
 }
 .md-button[disabled] {
 	color : rgba(0, 0, 0, 0.26);
 	background-color: transparent;
 }
-.admin-filter .md-button{
+.admin-filter .md-button, .jumbo .md-button{
 	font-weight:400;
 	text-transform:capitalize;
 	width:100%;
 }
 .login-button .button{
 	width:100%;
+}
+form .md-button{
+	width:100%;
+	margin:10px 0 0 0;
+	padding:0;
+	text-transform: capitalize;
+	font-size:12px;
+	line-height: 25px;
+    min-height: 25px;
 }
 
 /*select boxes*/
@@ -150,6 +160,12 @@ md-select-menu {
 .product-grid{
 	padding:10px;
 }
+.product-grid img{
+	max-height:240px;
+}
+.row{
+	padding:0 15px 0 15px;
+}
 .grid-text{
 	margin-bottom:10px;
 	background:#E2E2E2;
@@ -177,10 +193,10 @@ md-select-menu {
 .admin-all, .locations-type{
 	padding:5%;
 }
-.product-table{
+/*.product-table{
 	padding:0;
 	margin:20px 0 20px 0;
-}
+}*/
 .product-console{
 	padding:0;
 }
@@ -188,9 +204,13 @@ md-select-menu {
 	margin: 30px 0 0 0;
 	text-align:right;
 }
-.row1{
-	margin-bottom:10px;
+form h3{
+	padding-top:20px;
+	font-weight:400;
+	color:#ABABAB;
 }
+
+
 
 /*footer*/
 .footer{
@@ -231,7 +251,6 @@ md-select-menu {
 	box-shadow:none;
 	outline:0;
 }
-
 
 /*quesionable*/
 .add-product{

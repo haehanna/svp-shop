@@ -1,24 +1,23 @@
-
-<div class="content col-sm-2 col-sm-offset-2">
+<div class="content jumbo col-xs-10 col-xs-offset-1">
 	<a ui-sref="admin.addjumbotron">
 		<md-button>Add Jumbotron</md-button>
 	</a>
 </div>
 
-
-
-<div class="content col-sm-6">
-	<table>
-		<tr>
+<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+		<table>
+			<tr>
 			<th class="col-sm-2">Title</th>
 			<th class="col-sm-8">Brand</th>
 			<th class="col-sm-2">Edit</th>
 		</tr>
 		<tr ng-repeat="jumbotron in ctrl.jumbotrons">
 			<td class="col-sm-2">{{jumbotron.title}}</td>
-			<td class="col-sm-8"><img ng-src="{{'/assets/img/' + jumbotron.img}}" style="width:100%"></td>
-			<td class="col-sm-2"><button class="button" ng-click="ctrl.toJumbotron(jumbotron,jumbotron.id)">x</button></td>
-		</tr>
-	</table>
+			<td class="col-sm-8"><img ng-src="{{'/assets/img/' + jumbotron.img}}" style="margin:5px;width:100%"></td>
+			<td class="col-sm-2">
+			<i class="fa fa-pencil" ng-click="ctrl.toJumbotron(jumbotron,jumbotron.id)"></i></td>
+			</tr>
+		</table>
+
 </div>
 
