@@ -37,7 +37,7 @@ JumboCtrl.prototype.deleteJumbotron = function(){
 
 JumboCtrl.prototype.updateJumbotron = function(){
 	var ctrl = this;
-	console.log(ctrl.jumbotron);
+	// console.log(ctrl.jumbotron);
 	ctrl.adminSrv.updateJumbotron(ctrl.jumbotron, ctrl.jumbotron.id)
 }
 
@@ -49,10 +49,10 @@ JumboCtrl.prototype.uploadImg = function(file){
 			data: {file: file}
 		})
 		.then(function(res) {
-			console.log(res);
+			// console.log(res);
 			ctrl.imgname = res.data[0].filename;
 		}, function(err) {
-			console.log(err);
+			// console.log(err);
 		})
 }
 

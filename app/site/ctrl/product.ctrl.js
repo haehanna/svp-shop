@@ -32,7 +32,7 @@ function ProductCtrl(Upload,adminprodSrv,$state,$stateParams,api,product, $scope
 	if ($stateParams.productId) {
 		adminprodSrv.getProduct($stateParams.productId)
 		.then(function(res){
-			console.log(res);
+			// console.log(res);
 			ctrl.product = res;
 
 			for (var index in ctrl.genders){
@@ -88,7 +88,7 @@ ProductCtrl.prototype.updateProduct = function(){
 	ctrl.product.brand = ctrl.brand.value;
 	ctrl.product.featured = ctrl.featured;
 	ctrl.product.imgname = ctrl.imgname;
-	console.log(ctrl.product);
+	// console.log(ctrl.product);
 	ctrl.adminprodSrv.updateProduct(ctrl.product, ctrl.product.id)
 }
 
@@ -100,10 +100,10 @@ ProductCtrl.prototype.uploadImg = function(file){
 			data: {file: file}
 		})
 		.then(function(res) {
-			console.log(res);
+			// console.log(res);
 			ctrl.imgname = res.data[0].filename;
 		}, function(err) {
-			console.log(err);
+			// console.log(err);
 		})
 }
 

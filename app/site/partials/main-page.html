@@ -9,13 +9,17 @@
 	</div>
 <!-- products -->
 <div class="featured-products">
-	<h1>Best Sellers</h1>
+	<h1>Featured Products</h1>
 </div>
 
 <div ng-repeat="product in ctrl.products | filter:{featured:true}" ng-if="$index < 6" class="col-sm-4 main-products">
-	<img ng-src="{{'/assets/img/' + product.img}}" style="width:100%"><br>
-	{{product.title}}<br>
-	{{product.brand}} {{product.gender}}
+	<div>
+		<img class="product-img" ng-src="{{'/assets/img/' + product.img}}" style="width:100%">
+	</div>
+	<div class="grid-text">
+		{{product.title | uppercase}}<br>
+		<b>{{product.brand | uppercase}} | {{product.gender | uppercase}}</b>
+	</div>
 </div>
 
 <!-- footer -->

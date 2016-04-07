@@ -12,11 +12,11 @@ ProductService.prototype.getProducts = function(){
 	var _this = this;
 	return this.api.request('/products',{},'GET')
 	.then(function(res){
-		console.log(res);
+		// console.log(res);
 		_this.products = res.data.products;
 		return res.data.products;
 	},function(res){
-		console.log(res);
+		// console.log(res);
 		return;
 	})
 }
@@ -33,7 +33,7 @@ ProductService.prototype.addProduct = function(product){
 	var _this = this;
 	this.api.request('/products',product,'POST')
 	.then(function(res){
-		console.log(res);
+		// console.log(res);
 		if(res.status === 200){
 			_this.products.push(res.data.product);
 			_this.state.go('admin.products');
@@ -45,7 +45,7 @@ ProductService.prototype.deleteProduct = function(productId, product){
 	var _this = this;
 	return this.api.request('/products/'+productId,product,'DEL')
 	.then(function(res){
-		console.log(res);
+		// console.log(res);
 		if(res.status === 200){
 			for(index in _this.products){
 				if(_this.products[index].id == productId){
@@ -60,7 +60,7 @@ ProductService.prototype.updateProduct = function(product,productId){
 	var _this = this; 
 	this.api.request('/products/'+productId,product,'PUT')
 	.then(function(res){
-		console.log(res);
+		// console.log(res);
 		if(res.status === 200){
 			_this.updateProductList(product,productId);
 			_this.state.go('admin.products');

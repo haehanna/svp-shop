@@ -28,7 +28,7 @@
 				user = JSON.stringify(user);
 				$http.post('/api/auth/register',user)
 				.then(function(res){
-					console.log(res);
+					// console.log(res);
 					authVm.register_btn = res.data.msg;
 				})
 			}
@@ -47,7 +47,7 @@
 			user = JSON.stringify(user);
 			$http.post('/api/auth/authenticate',user)
 			.then(function(res){
-				console.log(res);
+				// console.log(res);
 				localStorage.loginEmail = authVm.email;
 				authVm.auth_btn = res.data.msg;
 				if (res.data.user){
